@@ -1,0 +1,19 @@
+function maprcid() 
+{
+  var sheet1 = SpreadsheetApp.getActive().getSheetByName("sportstb");
+  var sheet2 = SpreadsheetApp.getActive().getSheetByName("sports");
+  var data1 = sheet1.getDataRange().getValues();
+  var data2 = sheet2.getDataRange().getValues();
+  
+  for (var i = 1; i < data1.length; i++) 
+  {
+    var rcname = data1[i][0];
+    for (var j = 1; j < data2.length; j++) {
+      if (data2[j][0] == rcname) {
+        var rcid = data2[j][1];
+        sheet1.getRange(i+1, data1[0].length+1).setValue(rcid);
+        break;
+      }
+    }
+  }
+}
